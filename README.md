@@ -24,7 +24,7 @@ This application was developed and tested using:
 
 ## TL;DR
 if you know all setup steps just:
-run `docker-compose up`
+run `docker-compose up -d`
 Application served at `http://localhost:8080`
 
 ## Environment setup
