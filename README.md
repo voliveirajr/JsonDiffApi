@@ -60,17 +60,18 @@ To retrieve the result you execute a get by id you defined
 The response returned is a json object with a result element or error
 
 error:
+
 `{ "error": "Resource does not exist" }`
 
-
 valid requests examples"
+
 `{
     "result": "objects have no difference"
 }`
 
 when idenfied the differences it returns mentioning what sould be deleted, inserted and/or deleted
-`
-{
+
+`{
   "result": {
     "delete": [
       "test"
