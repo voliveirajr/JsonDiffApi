@@ -5,11 +5,19 @@ from resources.diff_resource import *
 from logging.config import fileConfig
 
 app = Flask(__name__)
-app.config['MONGODB_SETTINGS'] = {
-    'db': 'diff_db',
-    'host': 'localhost',
-    'port': 27017,
-}
+
+if app.config['ENV'] == 'production':
+    app.config['MONGODB_SETTINGS'] = {
+        'db': 'diff_db',
+        'host': 'mongodb',
+        'port': 27017,
+    }
+else:
+    app.config['MONGODB_SETTINGS'] = {
+        'db': 'diff_db',
+        'host': 'localhost',
+        'port': 27017,
+    }
 
 api = Api(app)
 db = MongoEngine(app)

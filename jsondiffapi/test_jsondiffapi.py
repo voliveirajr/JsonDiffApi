@@ -40,12 +40,12 @@ def test_no_valid_json_right(client):
 
 def test_create_left(client):
     rv = client.post('/v1/diff/1111111/left', data="eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9")
-    assert b'"left":"eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9"' in rv.data
+    assert b'"left": "eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9"' in rv.data
     assert rv.status == "200 OK"
 
 def test_create_right(client):
     rv = client.post('/v1/diff/1111111/right', data="eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9")
-    assert b'"right":"eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9"' in rv.data
+    assert b'"right": "eyJtc2ciOiJ5b3UgYmV0dGEgaGlyZSBtZSJ9"' in rv.data
     assert rv.status == "200 OK"
 
 def test_get_id_not_exists(client):

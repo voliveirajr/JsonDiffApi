@@ -6,27 +6,20 @@ services:
     ports:
     - 27017:27017
     command: --smallfiles
-#services:
 
-#  mongo:
-#    image: mongo
-#    command: --smallfiles
-#    restart: always
+  jsondiffapi:
+    build: .
+    image: volmar/jsondiffapi:v1
+    command: uwsgi --ini uwsgi.ini
+    #command: python server.py
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
+
+  web:
+    image: nginx
     ports:
-      - 27017:27017
-    #environment:
-      #MONGO_INITDB_ROOT_USERNAME: root
-      #MONGO_INITDB_ROOT_PASSWORD: example
-
-      #MONGODB_USER: diff_user
-      #MONGODB_DATABASE: diff_db
-      #MONGODB_PASS: diff_pass
-
-#  mongo-express:
-#    image: mongo-express
-#    restart: always
-#    ports:
-#      - 8081:8081
-#    environment:
-#      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-#      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    - 8080:8080
+    depends_on:
+      - jsondiffapi
