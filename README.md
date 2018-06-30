@@ -29,10 +29,15 @@ Application served at `http://localhost:8080`
 
 ## Environment setup
 Create a new environment with virtualenv
+
 `virtualenv env`
+
 load it
+
 `source env/bin/activate`
+
 install requirements
+
 `pip install -r requirements.txt`
 
 ## Testing
