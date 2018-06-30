@@ -3,23 +3,13 @@ services:
   mongodb:
     image: mongo:3.2.4
     container_name: "mongodb"
-    ports:
-    - 27017:27017
     command: --smallfiles
 
   jsondiffapi:
     build: .
     image: volmar/jsondiffapi:v1
     command: uwsgi --ini uwsgi.ini
-    #command: python server.py
     links:
       - mongodb
     depends_on:
       - mongodb
-
-  web:
-    image: nginx
-    ports:
-    - 8080:8080
-    depends_on:
-      - jsondiffapi
