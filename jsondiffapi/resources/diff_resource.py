@@ -17,7 +17,7 @@ class Diff(Resource):
             diffo = DiffReq.objects.get(diff_id=id)
         except DoesNotExist, e:
             current_app.logger.debug(e)
-            return { "error": "Resourse does not exist" }, 404
+            return { "error": "Resource does not exist" }, 404
 
         if diffo.left and diffo.right:
             dleft = json.loads(base64.b64decode(diffo.left))
