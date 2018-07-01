@@ -96,6 +96,7 @@ Following a list of possible improvements ordered by priority:
 * Nginx loadbalancing
 * Swagger UI
 * Ansible or Kubernetes automation
+    * http server horizontal scaling & MongoDB clustering
 
 ## Author
  Volmar Oliveira Junior
