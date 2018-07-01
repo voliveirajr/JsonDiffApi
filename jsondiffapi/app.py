@@ -13,6 +13,7 @@ if app.config['ENV'] == 'production':
         'port': 27017,
     }
 else:
+    #configuration for tests and development purposes
     app.config['MONGODB_SETTINGS'] = {
         'db': 'diff_db',
         'host': 'localhost',
@@ -22,6 +23,7 @@ else:
 api = Api(app)
 db = MongoEngine(app)
 
+#registering all endpoints
 api.add_resource(Diff, '/v1/diff/<id>')
 api.add_resource(AddRight, '/v1/diff/<id>/right')
 api.add_resource(AddLeft, '/v1/diff/<id>/left')

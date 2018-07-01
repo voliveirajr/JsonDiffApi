@@ -11,6 +11,7 @@ import json
 
 class Diff(Resource):
     def get(self, id=None):
+        """Retrieve a request from db and return difference between registered json objects"""
         current_app.logger.debug('GET id:%s', id)
 
         try:
@@ -25,9 +26,6 @@ class Diff(Resource):
         else:
             return { "error": "You need provide left and right objects" }, 400
 
-        print len(dleft)
-        print len(dright)
-
         if len(dleft) != len(dright):
             return {"result": "objects should have same size"}
 
@@ -39,12 +37,14 @@ class Diff(Resource):
             return {"result": "objects have no difference"}
         else:
             for i in result:
+                #jsondiff module returns id as an objets and prints the labes as ""$delete"
                 response["result"][str(i).replace("$", "")] = result[i]
 
         return jsonify(response)
 
 class AddLeft(Resource):
     def post(self, id=None):
+        """Creates a diff request to store left json object or updates existent one"""
         current_app.logger.debug('POST id:%s', id)
         current_app.logger.debug('request.data: %s', request.data)
         try:
@@ -75,6 +75,7 @@ class AddLeft(Resource):
 
 class AddRight(Resource):
     def post(self, id=None):
+        """Creates a diff request to store right json object or updates existent one"""
         current_app.logger.debug('POST id:%s', id)
         current_app.logger.debug('request.data: %s', request.data)
         try:

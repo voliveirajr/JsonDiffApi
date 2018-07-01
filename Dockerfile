@@ -14,13 +14,7 @@ COPY . /app
 # Install app requirements
 RUN pip install -r app/requirements.txt
 
-# Create app directory
-#ADD . /JsonDiffApi
-
 # Set the default directory for our environment
 ENV HOME /app
 ENV PYTHONPATH /app
 WORKDIR /app
-
-# Expose port 8080 for uwsgi
-#EXPOSE 8080
