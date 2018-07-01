@@ -24,7 +24,9 @@ This application was developed and tested using:
 
 ## TL;DR
 if you know all setup steps just:
+
 run `docker-compose up -d`
+
 Application served at `http://localhost:8080`
 
 ## Environment setup
@@ -54,6 +56,8 @@ To create a new diff object and feed with left and right documents you can curl 
 To retrieve the result you execute a get by id you defined
 
 `curl -X GET -i 'http://127.0.0.1:8080/v1/diff/111111111'`
+
+:warning: Considering the purpose of the tool, in order to save resources all requests have a TTL of 1 hour, after that they will be automatically removed from database.
 
 ## Response examples
 
@@ -90,6 +94,7 @@ Following a list of possible improvements ordered by priority:
 * Database authentication
 * HTTP authentication
 * Nginx loadbalancing
+* Swagger UI
 * Ansible or Kubernetes automation
 
 ## Author
